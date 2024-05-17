@@ -1,4 +1,4 @@
-package com.kimhong.project_final.data.remote;
+package com.kimhong.project_final.data.service;
 
 import com.kimhong.project_final.data.model.login.LoginRequest;
 import com.kimhong.project_final.data.model.login.LoginResponse;

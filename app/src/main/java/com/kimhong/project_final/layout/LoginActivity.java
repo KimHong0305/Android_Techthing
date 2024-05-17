@@ -6,10 +6,12 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,7 +19,7 @@ import com.kimhong.project_final.R;
 import com.kimhong.project_final.data.model.login.LoginRequest;
 import com.kimhong.project_final.data.model.login.LoginResponse;
 import com.kimhong.project_final.data.remote.APIUtils;
-import com.kimhong.project_final.data.remote.UserService;
+import com.kimhong.project_final.data.service.UserService;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -27,6 +29,9 @@ public class LoginActivity extends AppCompatActivity {
     private EditText etUsername, etPassword;
     private ConstraintLayout btnLogin;
     private UserService userService;
+    private ImageView seePassword;
+    private TextView forgotPassword;
+    private boolean isPasswordVisible = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +45,27 @@ public class LoginActivity extends AppCompatActivity {
         etUsername = findViewById(R.id.UserName);
         etPassword = findViewById(R.id.Password);
         btnLogin = findViewById(R.id.btnLogin);
+        seePassword = findViewById(R.id.seePassword);
+        forgotPassword = findViewById(R.id.forgot);
 
-        // chuyển qua đăng kí
+        // chuyen qua trang quen mat khau
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity1.class);
+                startActivity(intent);
+            }
+        });
+
         TextView btnRegister = findViewById(R.id.btnRegister);
+        seePassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                isPasswordVisible = !isPasswordVisible;
+                updatePasswordVisibility();
+            }
+        });
+        // chuyển qua đăng kí
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,6 +100,7 @@ public class LoginActivity extends AppCompatActivity {
                         saveUserData(loginResponse);
 
                         // Chuyển đến màn hình chính
+                        Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
                         finish();
                     } else {
@@ -95,6 +119,17 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(LoginActivity.this, "Lỗi kết nối: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+    // ham hien thi mat khau
+    private void updatePasswordVisibility() {
+        if (isPasswordVisible) {
+            etPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+            seePassword.setImageResource(R.drawable.visible);
+        } else {
+            etPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+            seePassword.setImageResource(R.drawable.invisible);
+        }
+        etPassword.setSelection(etPassword.getText().length()); // Để con trỏ chuột ở cuối
     }
 
     private void saveUserData(LoginResponse loginResponse) {

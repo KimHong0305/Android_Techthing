@@ -12,7 +12,7 @@ import com.kimhong.project_final.R;
 import com.kimhong.project_final.data.model.signup.SignUpRequest;
 import com.kimhong.project_final.data.model.signup.SignUpResponse;
 import com.kimhong.project_final.data.remote.APIUtils;
-import com.kimhong.project_final.data.remote.UserService;
+import com.kimhong.project_final.data.service.UserService;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import retrofit2.Call;
 import retrofit2.Callback;
