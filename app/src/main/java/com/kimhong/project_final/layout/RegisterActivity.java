@@ -35,12 +35,12 @@ public class RegisterActivity extends AppCompatActivity {
         Username = findViewById(R.id.Username);
         Password = findViewById(R.id.Password);
         ConfirmPassword = findViewById(R.id.ConfirmPassword);
-        Fullname = findViewById(R.id.FullName);
-        Email = findViewById(R.id.Email);
-        Phone = findViewById(R.id.Phone);
+        Fullname = findViewById(R.id.txtfullname);
+        Email = findViewById(R.id.txtemail);
+        Phone = findViewById(R.id.txtphone);
 
         // Lấy instance của UserService
-        userService = APIUtils.getUserService();
+        userService = APIUtils.getUserService(this);
 
         // Thiết lập listener cho nút đăng ký
         btnRegister = findViewById(R.id.btnRegister);

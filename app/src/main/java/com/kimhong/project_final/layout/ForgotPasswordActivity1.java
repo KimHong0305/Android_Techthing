@@ -36,7 +36,7 @@ public class ForgotPasswordActivity1 extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity1_forgot_password);
-        Email = findViewById(R.id.Email);
+        Email = findViewById(R.id.txtemail);
         btnBack = findViewById(R.id.comeBack);
         btnSend = findViewById(R.id.btnSend);
 

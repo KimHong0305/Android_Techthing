@@ -120,7 +120,7 @@
             app:srcCompat="@drawable/cart" />
 
         <ImageView
-            android:id="@+id/imageView9"
+            android:id="@+id/btn_userinfo"
             android:layout_width="25dp"
             android:layout_height="31dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -136,7 +136,7 @@
             android:layout_width="30dp"
             android:layout_height="31dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imageView9"
+            app:layout_constraintEnd_toStartOf="@+id/btn_userinfo"
             app:layout_constraintHorizontal_bias="0.886"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

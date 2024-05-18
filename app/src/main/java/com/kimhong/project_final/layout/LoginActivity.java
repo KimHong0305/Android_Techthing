@@ -75,7 +75,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         // Lấy instance của UserService
-        userService = APIUtils.getUserService();
+        userService = APIUtils.getUserService(this);
 
         // Thiết lập listener cho nút đăng nhập
         btnLogin.setOnClickListener(v -> {

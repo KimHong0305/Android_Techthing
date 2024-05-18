@@ -96,7 +96,7 @@
                 tools:ignore="MissingConstraints">
 
                 <EditText
-                    android:id="@+id/FullName"
+                    android:id="@+id/txtfullname"
                     style="@style/EditTextWithoutUnderline"
                     android:layout_width="281dp"
                     android:layout_height="54dp"
@@ -114,7 +114,7 @@
                     android:layout_width="18dp"
                     android:layout_height="23dp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/FullName"
+                    app:layout_constraintEnd_toStartOf="@+id/txtfullname"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/user_name" />
@@ -131,7 +131,7 @@
                 tools:ignore="MissingConstraints">
 
                 <EditText
-                    android:id="@+id/Email"
+                    android:id="@+id/txtemail"
                     style="@style/EditTextWithoutUnderline"
                     android:layout_width="281dp"
                     android:layout_height="54dp"
@@ -149,7 +149,7 @@
                     android:layout_width="18dp"
                     android:layout_height="23dp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/Email"
+                    app:layout_constraintEnd_toStartOf="@+id/txtemail"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/email" />
@@ -166,7 +166,7 @@
                 tools:ignore="MissingConstraints">
 
                 <EditText
-                    android:id="@+id/Phone"
+                    android:id="@+id/txtphone"
                     style="@style/EditTextWithoutUnderline"
                     android:layout_width="281dp"
                     android:layout_height="54dp"
@@ -184,7 +184,7 @@
                     android:layout_width="18dp"
                     android:layout_height="23dp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/Phone"
+                    app:layout_constraintEnd_toStartOf="@+id/txtphone"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/phone" />
