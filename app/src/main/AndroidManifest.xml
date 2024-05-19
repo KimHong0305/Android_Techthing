@@ -18,6 +18,15 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".layout.CartActivity"
+            android:exported="false" />
+        <activity
+            android:name=".layout.CheckoutActivity"
+            android:exported="false" />
+        <activity
+            android:name=".layout.DetailProductActivity"
+            android:exported="false" />
+        <activity
             android:name=".layout.UserInfoActivity"
             android:exported="false" />
         <activity

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.kimhong.project_final.data.service.ForgotPasswordService;
+import com.kimhong.project_final.data.service.ProductService;
 import com.kimhong.project_final.data.service.UserService;
 
 import java.io.IOException;
@@ -52,6 +53,10 @@ public class APIUtils {
     }
     public static ForgotPasswordService getForgotPasswordService() {
         return RetrofitClient.getClient(BASE_URL).create(ForgotPasswordService.class);
+    }
+
+    public static ProductService getProductService(){
+        return RetrofitClient.getClient(BASE_URL).create(ProductService.class);
     }
 
 }
