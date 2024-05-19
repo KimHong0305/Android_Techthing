@@ -69,6 +69,7 @@ public class ForgotPasswordActivity1 extends AppCompatActivity {
                                         // Chuyển sang ForgotPasswordActivity2
                                         Toast.makeText(ForgotPasswordActivity1.this, "Đã gửi mã OTP đến email của bạn", Toast.LENGTH_SHORT).show();
                                         Intent intent = new Intent(ForgotPasswordActivity1.this, ForgotPasswordActivity2.class);
+                                        intent.putExtra("email", email);
                                         startActivity(intent);
                                     } else {
                                         // Xử lý lỗi từ API
@@ -92,6 +93,7 @@ public class ForgotPasswordActivity1 extends AppCompatActivity {
                         public void onFailure(Call<VerifyEmailResponse> call, Throwable t) {
                             Toast.makeText(ForgotPasswordActivity1.this, "Đã gửi mã OTP đến email của bạn", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(ForgotPasswordActivity1.this, ForgotPasswordActivity2.class);
+                            intent.putExtra("email", email);
                             startActivity(intent);
                         }
                     });

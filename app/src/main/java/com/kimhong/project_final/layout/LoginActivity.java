@@ -133,7 +133,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void saveUserData(LoginResponse loginResponse) {
-        // Lưu thông tin người dùng từ LoginResponse, ví dụ:
+        // Lưu thông tin người dùng từ LoginResponse
         SharedPreferences sharedPreferences = getSharedPreferences("user_data", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("token", loginResponse.getResult().getToken());
