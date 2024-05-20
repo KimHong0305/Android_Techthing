@@ -57,14 +57,20 @@ public class UserInfoActivity extends AppCompatActivity {
         });
     }
     private void callApiUpdateBio(String fullname, String mail, String phone) {
+        userService = APIUtils.getUserService();
+        SharedPreferences sharedPreferences = getSharedPreferences("user_data", MODE_PRIVATE);
+        String token = sharedPreferences.getString("token", "");
+        String authHeader = "Bearer " + token; // Thêm tiền tố "Bearer "
+
         updateUserRequest request = new updateUserRequest(fullname, mail, phone);
         userService = APIUtils.getUserService();
-        userService.updateinfo(request).enqueue(new Callback<updateUserResponse>() {
+        userService.updateinfo(request,authHeader).enqueue(new Callback<updateUserResponse>() {
             @Override
             public void onResponse(Call<updateUserResponse> call, Response<updateUserResponse> response) {
                 if(response.isSuccessful() && response.body().getCode() == 200) {
                     Toast.makeText(UserInfoActivity.this, "Cập nhật thành công!", Toast.LENGTH_SHORT).show();
                 } else {
+                    Log.d("TAG", "Response Body: " + response.code());
                     Toast.makeText(UserInfoActivity.this, "Cập nhật KHÔNG thành công!", Toast.LENGTH_SHORT).show();
                 }
             }

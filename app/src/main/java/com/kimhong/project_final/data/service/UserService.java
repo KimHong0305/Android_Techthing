@@ -29,5 +29,5 @@ public interface UserService {
     Call<UserResponse> userinfo(@Header("Authorization") String authHeader);
 
     @PUT ("user/update/bio")
-    Call<updateUserResponse> updateinfo(@Body updateUserRequest updateUserRequest);
+    Call<updateUserResponse> updateinfo(@Body updateUserRequest updateUserRequest,@Header("Authorization") String authHeader);
 }
