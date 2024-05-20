@@ -13,7 +13,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="148dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.821"
+        app:layout_constraintHorizontal_bias="0.285"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@drawable/userava" />
@@ -25,21 +25,23 @@
         android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@id/imageView3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
 
         <TextView
             android:id="@+id/tvfullname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Fullname"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:layout_marginTop="16dp"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/edit_button"
-
-            >
+            android:layout_marginTop="16dp">
 
             <ImageView
                 android:id="@+id/imageView20"
@@ -71,11 +73,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Phone"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:layout_marginTop="16dp"/>
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/edit_button">
+            android:background="@drawable/edit_button"
+            android:layout_marginTop="16dp">
 
             <ImageView
                 android:id="@+id/phone"
@@ -107,11 +111,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Email"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:layout_marginTop="16dp"/>
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/edit_button">
+            android:background="@drawable/edit_button"
+            android:layout_marginTop="16dp">
 
             <ImageView
                 android:id="@+id/email"
@@ -135,7 +141,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@id/email"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintVertical_bias="0.0"
+                />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
         <TextView
@@ -143,11 +150,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Username"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:layout_marginTop="16dp"/>
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/edit_button">
+            android:background="@drawable/edit_button"
+            android:layout_marginTop="16dp">
 
             <ImageView
                 android:id="@+id/imgusername"
@@ -190,10 +199,9 @@
         android:textColorLink="#BA5F7E"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.636"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.553" />
+        app:layout_constraintVertical_bias="0.39" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
