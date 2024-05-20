@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.kimhong.project_final.R;
 import com.kimhong.project_final.data.model.product.ProductResponse;
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
@@ -46,31 +46,48 @@ public class ProductAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.view_product_main, parent, false);
-            holder = new ViewHolder(convertView);
+            convertView = LayoutInflater.from(context).inflate(R.layout.view_product_manager, parent, false);
+            holder = new ViewHolder(convertView, onDeleteClickListener, onEditClickListener);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
 
         ProductResponse.Product product = products.get(position);
-        holder.bind(product, onDeleteClickListener, onEditClickListener);
+        holder.bind(product);
 
         return convertView;
     }
 
     public static class ViewHolder {
+        private ImageView imgProduct;
         private TextView txtName, txtPrice;
+        private ImageView btnDelete, btnEdit;
+        private ProductResponse.Product product;
 
-        public ViewHolder(View view) {
+        public ViewHolder(View view, OnDeleteClickListener onDeleteClickListener, OnEditClickListener onEditClickListener) {
+            imgProduct = view.findViewById(R.id.imgProduct);
             txtName = view.findViewById(R.id.txtName);
-//            txtPrice = view.findViewById(R.id.txtPrice);
+            txtPrice = view.findViewById(R.id.txtPrice);
+            btnDelete = view.findViewById(R.id.btnDelete);
+            btnEdit = view.findViewById(R.id.btnEdit);
+
+            if (btnDelete != null) {
+                btnDelete.setOnClickListener(v -> onDeleteClickListener.onDeleteClick(product.getId()));
+            }
+
+            if (btnEdit != null) {
+                btnEdit.setOnClickListener(v -> onEditClickListener.onEditClick(product.getId()));
+            }
         }
 
-        public void bind(ProductResponse.Product product, OnDeleteClickListener onDeleteClickListener, OnEditClickListener onEditClickListener) {
-//
+        public void bind(ProductResponse.Product product) {
+            this.product = product;
+            Glide.with(imgProduct.getContext())
+                    .load(product.getImage())
+                    .into(imgProduct);
             txtName.setText(product.getName());
-//            txtPrice.setText(String.format("%.2f", product.getPrice()));
+            txtPrice.setText("$" + String.valueOf((int) product.getPrice()));
         }
     }
 

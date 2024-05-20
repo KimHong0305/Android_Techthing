@@ -29,7 +29,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainAdminActivity extends AppCompatActivity {
-    private ConstraintLayout btnUser, btnProduct;
+    private ConstraintLayout btnUser, btnProduct, btnCategory;
     private ImageView btnLogout;
     private AuthService authService;
 
@@ -44,6 +44,15 @@ public class MainAdminActivity extends AppCompatActivity {
         btnUser = findViewById(R.id.btnUser);
         btnLogout = findViewById(R.id.btnLogout);
         btnProduct = findViewById(R.id.btnProduct);
+        btnCategory = findViewById(R.id.btnCategory);
+
+        btnCategory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainAdminActivity.this, CategoryManagerActivity.class);
+                startActivity(intent);
+            }
+        });
 
         SharedPreferences sharedPreferences = getSharedPreferences("user_data", MODE_PRIVATE);
         String token =  sharedPreferences.getString("token", "");

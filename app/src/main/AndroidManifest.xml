@@ -18,6 +18,15 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".layout.manager.CreateCategoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".layout.manager.CategoryManagerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".layout.manager.CreateProductActivity"
+            android:exported="false" />
+        <activity
             android:name=".layout.manager.ProductManagerActivity"
             android:exported="false" />
         <activity

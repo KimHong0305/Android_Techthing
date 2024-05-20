@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".layout.manager.ProductManagerActivity">
+    tools:context=".layout.manager.CategoryManagerActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout12"
@@ -28,23 +28,23 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.761"
-            app:srcCompat="@drawable/smartphone" />
+            app:srcCompat="@drawable/laptop_phone" />
 
         <TextView
             android:id="@+id/textView18"
-            android:layout_width="241dp"
-            android:layout_height="60dp"
+            android:layout_width="263dp"
+            android:layout_height="47dp"
             android:fontFamily="@font/baloo"
-            android:text="Quản lý sản phẩm"
+            android:text="Quản lý danh mục"
             android:textColor="#F4BD46"
             android:textSize="30dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.622"
+            app:layout_constraintHorizontal_bias="0.79"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.659" />
+            app:layout_constraintVertical_bias="0.733" />
 
         <ImageView
             android:id="@+id/btnHome"
