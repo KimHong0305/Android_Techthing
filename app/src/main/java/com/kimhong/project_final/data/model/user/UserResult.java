@@ -10,12 +10,16 @@ public class UserResult {
     private String mail;
     private String phone;
     private String address;
-    private List<Roles> roles;
-    private List<Invoices> invoices;
-    private Cart cart;
-    //forgot password null
-    private int forgotPassword;
 
+    public UserResult(String id, String username, String password, String fullname, String mail, String phone, String address) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.fullname = fullname;
+        this.mail = mail;
+        this.phone = phone;
+        this.address = address;
+    }
 
     public String getId() {
         return id;
@@ -71,37 +75,5 @@ public class UserResult {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public List<Roles> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<Roles> roles) {
-        this.roles = roles;
-    }
-
-    public List<Invoices> getInvoices() {
-        return invoices;
-    }
-
-    public void setInvoices(List<Invoices> invoices) {
-        this.invoices = invoices;
-    }
-
-    public Cart getCart() {
-        return cart;
-    }
-
-    public void setCart(Cart cart) {
-        this.cart = cart;
-    }
-
-    public int getForgotPassword() {
-        return forgotPassword;
-    }
-
-    public void setForgotPassword(int forgotPassword) {
-        this.forgotPassword = forgotPassword;
     }
 }

@@ -1,6 +1,8 @@
 package com.kimhong.project_final.layout;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -56,7 +58,7 @@ public class UserInfoActivity extends AppCompatActivity {
     }
     private void callApiUpdateBio(String fullname, String mail, String phone) {
         updateUserRequest request = new updateUserRequest(fullname, mail, phone);
-        userService = APIUtils.getUserService(this);
+        userService = APIUtils.getUserService();
         userService.updateinfo(request).enqueue(new Callback<updateUserResponse>() {
             @Override
             public void onResponse(Call<updateUserResponse> call, Response<updateUserResponse> response) {
@@ -75,8 +77,11 @@ public class UserInfoActivity extends AppCompatActivity {
     }
     // fill data api
     private void callApi() {
-        userService = APIUtils.getUserService(this);
-        userService.userinfo().enqueue(new Callback<UserResponse>() {
+        userService = APIUtils.getUserService();
+        SharedPreferences sharedPreferences = getSharedPreferences("user_data", MODE_PRIVATE);
+        String token = sharedPreferences.getString("token", "");
+        String authHeader = "Bearer " + token; // Thêm tiền tố "Bearer "
+        userService.userinfo(authHeader).enqueue(new Callback<UserResponse>() {
             @Override
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
                 Toast.makeText(UserInfoActivity.this, "Da vao Userinfo", Toast.LENGTH_SHORT).show();
@@ -94,6 +99,7 @@ public class UserInfoActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<UserResponse> call, Throwable t) {
                 Toast.makeText(UserInfoActivity.this, "API call failed: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.d("Loi api","API call failed" + t.getMessage());
             }
         });
     }

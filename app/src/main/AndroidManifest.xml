@@ -18,10 +18,13 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".layout.ShippingInfo"
+            android:exported="false" />
+        <activity
             android:name=".layout.CartActivity"
             android:exported="false" />
         <activity
-            android:name=".layout.CheckoutActivity"
+            android:name=".layout.CartActivity"
             android:exported="false" />
         <activity
             android:name=".layout.DetailProductActivity"

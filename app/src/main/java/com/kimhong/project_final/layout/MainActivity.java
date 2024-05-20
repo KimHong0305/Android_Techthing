@@ -2,7 +2,6 @@ package com.kimhong.project_final.layout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -10,7 +9,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -52,6 +50,16 @@ public class MainActivity extends AppCompatActivity implements ProductAdapter.On
                 Toast.makeText(MainActivity.this, "Lỗi kết nối", Toast.LENGTH_SHORT).show();
             }
         });
+        //--------------------Cart--------------------
+        ImageView btn_cart = findViewById(R.id.btn_cart);
+        btn_cart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, CartActivity.class);
+                startActivity(intent);
+            }
+        });
+
         //--------------------use userinfo--------------------
         ImageView btn_userinfo = findViewById(R.id.btn_userinfo);
         btn_userinfo.setOnClickListener(new View.OnClickListener() {

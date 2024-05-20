@@ -17,5 +17,5 @@ public interface ProductService {
     Call<ProductResponse> getProducts();
     //findbyid
     @GET("/products/{id}")
-    Call<ProductDetailResponse> productDetail (@Path("id") String id);
+    Call<ProductResponse.Product> productDetail (@Path("id") String id);
 }

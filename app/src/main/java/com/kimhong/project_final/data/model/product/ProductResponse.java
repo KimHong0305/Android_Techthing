@@ -25,7 +25,7 @@ public class ProductResponse {
     public static class Product {
         private String id;
         private String name;
-        private double price;
+        private float price;
         private String image;
         private String description;
         private Category category;
@@ -50,7 +50,7 @@ public class ProductResponse {
             return price;
         }
 
-        public void setPrice(double price) {
+        public void setPrice(float price) {
             this.price = price;
         }
 

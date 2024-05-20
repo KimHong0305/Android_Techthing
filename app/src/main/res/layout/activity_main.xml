@@ -8,7 +8,6 @@
     android:background="#E5E5E5"
     tools:context=".layout.MainActivity">
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
         android:layout_width="305dp"
@@ -37,16 +36,14 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/banner"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="3dp"
         android:layout_marginTop="12dp"
-        app:layout_constraintEnd_toStartOf="@+id/constraintLayout"
-        app:layout_constraintHorizontal_bias="0.227"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
-
 
         <ImageView
             android:id="@+id/imageView5"
@@ -56,10 +53,9 @@
             android:src="@drawable/banner"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.487"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.372" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/imageView12"
@@ -140,7 +136,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/laptop" />
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -170,22 +165,19 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout3"
-        android:layout_width="414dp"
+        android:layout_width="match_parent"
         android:layout_height="130dp"
         android:layout_marginBottom="-50dp"
         android:background="@drawable/white_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.981">
+        app:layout_constraintStart_toStartOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="134dp"
             android:layout_height="47dp"
             android:background="@drawable/func_button"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imageView7"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.325"
@@ -218,7 +210,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ImageView
-            android:id="@+id/imageView7"
+            android:id="@+id/btn_cart"
             android:layout_width="32dp"
             android:layout_height="37dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -258,15 +250,14 @@
     <!-- Thay ScrollView bằng RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcv_products"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/banner"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/banner"
         tools:ignore="MissingConstraints">
-
     </androidx.recyclerview.widget.RecyclerView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

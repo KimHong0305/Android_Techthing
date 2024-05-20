@@ -40,7 +40,7 @@ public class RegisterActivity extends AppCompatActivity {
         Phone = findViewById(R.id.txtphone);
 
         // Lấy instance của UserService
-        userService = APIUtils.getUserService(this);
+        userService = APIUtils.getUserService();
 
         // Thiết lập listener cho nút đăng ký
         btnRegister = findViewById(R.id.btnRegister);
