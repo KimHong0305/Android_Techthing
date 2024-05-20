@@ -23,7 +23,8 @@ import com.kimhong.project_final.data.model.login.LoginResponse;
 import com.kimhong.project_final.data.remote.APIUtils;
 import com.kimhong.project_final.data.service.AuthService;
 import com.kimhong.project_final.data.service.UserService;
-import com.kimhong.project_final.layout.manager.MainAdminActivity;
+import com.kimhong.project_final.layout.admin.MainAdminActivity;
+import com.kimhong.project_final.layout.manager.MainManagerActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -36,6 +37,7 @@ public class LoginActivity extends AppCompatActivity {
     private AuthService authService;
     private ImageView seePassword;
     private TextView forgotPassword;
+    private String role;
     private boolean isPasswordVisible = false;
 
     @Override
@@ -124,7 +126,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-    private void check_Role(String token){
+    private void check_Role(String token) {
         AuthRequest authRequest = new AuthRequest(token);
         authService.check(authRequest).enqueue(new Callback<AuthResponse>() {
             @Override
@@ -134,7 +136,7 @@ public class LoginActivity extends AppCompatActivity {
                     if (authResponse.getCode() == 200) {
                         AuthResponse.Result result = authResponse.getResult();
                         if (result.isValid()) {
-                            String role = result.getRole();
+                            role = result.getRole();
                             switch (role) {
                                 case "USER":
                                     Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
@@ -147,7 +149,9 @@ public class LoginActivity extends AppCompatActivity {
                                     finish();
                                     break;
                                 case "MANAGER":
-                                    // Xử lý khi người dùng có role là MANAGER
+                                    Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(LoginActivity.this, MainManagerActivity.class));
+                                    finish();
                                     break;
                                 default:
                                     // Xử lý khi người dùng có role không hợp lệ
@@ -168,6 +172,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
     // ham hien thi mat khau
     private void updatePasswordVisibility() {
         if (isPasswordVisible) {
@@ -186,6 +191,7 @@ public class LoginActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("token", loginResponse.getResult().getToken());
         editor.putString("userId", loginResponse.getResult().getUserId());
+        editor.putString("role", role);
         editor.apply();
     }
     // Lấy token từ SharedPreferences

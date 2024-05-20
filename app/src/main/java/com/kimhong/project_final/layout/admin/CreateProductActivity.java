@@ -1,4 +1,4 @@
-package com.kimhong.project_final.layout.manager;
+package com.kimhong.project_final.layout.admin;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,11 +10,9 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -22,11 +20,8 @@ import android.widget.Toast;
 import com.kimhong.project_final.R;
 import com.kimhong.project_final.data.model.admin.product.CreateProductRequest;
 import com.kimhong.project_final.data.model.admin.product.CreateProductResponse;
-import com.kimhong.project_final.data.model.forgotPassword.VerifyEmailRequest;
-import com.kimhong.project_final.data.model.forgotPassword.VerifyEmailResponse;
 import com.kimhong.project_final.data.remote.APIUtils;
 import com.kimhong.project_final.data.service.AdminService;
-import com.kimhong.project_final.layout.LoginActivity;
 
 import java.io.File;
 

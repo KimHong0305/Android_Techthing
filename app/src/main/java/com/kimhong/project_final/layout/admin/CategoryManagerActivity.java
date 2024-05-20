@@ -1,4 +1,4 @@
-package com.kimhong.project_final.layout.manager;
+package com.kimhong.project_final.layout.admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -19,6 +19,7 @@ import com.kimhong.project_final.data.model.admin.category.CategoryResponse;
 import com.kimhong.project_final.data.model.admin.category.DeleteCategoryResponse;
 import com.kimhong.project_final.data.remote.APIUtils;
 import com.kimhong.project_final.data.service.AdminService;
+import com.kimhong.project_final.layout.manager.MainManagerActivity;
 
 import java.util.List;
 
@@ -51,11 +52,19 @@ public class CategoryManagerActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        SharedPreferences sharedPreferences = getSharedPreferences("user_data", MODE_PRIVATE);
+        String role =  sharedPreferences.getString("role", "");
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CategoryManagerActivity.this, MainAdminActivity.class);
-                startActivity(intent);
+                if (role == "ADMIN") {
+                    Intent intent = new Intent(CategoryManagerActivity.this, MainAdminActivity.class);
+                    startActivity(intent);
+                }
+                else{
+                    Intent intent = new Intent(CategoryManagerActivity.this, MainManagerActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 

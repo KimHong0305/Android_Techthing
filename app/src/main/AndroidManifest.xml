@@ -18,22 +18,28 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".layout.manager.CreateCategoryActivity"
+            android:name=".layout.SearchActivity"
             android:exported="false" />
         <activity
-            android:name=".layout.manager.CategoryManagerActivity"
+            android:name=".layout.manager.MainManagerActivity"
             android:exported="false" />
         <activity
-            android:name=".layout.manager.CreateProductActivity"
+            android:name=".layout.admin.CreateCategoryActivity"
             android:exported="false" />
         <activity
-            android:name=".layout.manager.ProductManagerActivity"
+            android:name=".layout.admin.CategoryManagerActivity"
             android:exported="false" />
         <activity
-            android:name=".layout.manager.UserManagerActivity"
+            android:name=".layout.admin.CreateProductActivity"
             android:exported="false" />
         <activity
-            android:name=".layout.manager.MainAdminActivity"
+            android:name=".layout.admin.ProductManagerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".layout.admin.UserManagerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".layout.admin.MainAdminActivity"
             android:exported="false" />
         <activity
             android:name=".layout.ForgotPasswordActivity3"

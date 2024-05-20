@@ -1,4 +1,4 @@
-package com.kimhong.project_final.layout.manager;
+package com.kimhong.project_final.layout.admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,11 +15,9 @@ import android.widget.Toast;
 import com.kimhong.project_final.R;
 import com.kimhong.project_final.data.model.admin.user.DeleteResponse;
 import com.kimhong.project_final.data.model.admin.user.UserResponse;
-import com.kimhong.project_final.data.model.auth.LogoutResponse;
 import com.kimhong.project_final.data.remote.APIUtils;
 import com.kimhong.project_final.data.service.AdminService;
 import com.kimhong.project_final.adapter.UserAdapter;
-import com.kimhong.project_final.layout.LoginActivity;
 
 import java.util.List;
 

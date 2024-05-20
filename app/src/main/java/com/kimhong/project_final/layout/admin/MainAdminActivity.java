@@ -1,4 +1,4 @@
-package com.kimhong.project_final.layout.manager;
+package com.kimhong.project_final.layout.admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -13,16 +13,11 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.kimhong.project_final.R;
-import com.kimhong.project_final.data.model.auth.AuthRequest;
-import com.kimhong.project_final.data.model.auth.AuthResponse;
 import com.kimhong.project_final.data.model.auth.LogoutRequest;
 import com.kimhong.project_final.data.model.auth.LogoutResponse;
 import com.kimhong.project_final.data.remote.APIUtils;
 import com.kimhong.project_final.data.service.AuthService;
-import com.kimhong.project_final.layout.ForgotPasswordActivity1;
-import com.kimhong.project_final.layout.ForgotPasswordActivity2;
 import com.kimhong.project_final.layout.LoginActivity;
-import com.kimhong.project_final.layout.MainActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;

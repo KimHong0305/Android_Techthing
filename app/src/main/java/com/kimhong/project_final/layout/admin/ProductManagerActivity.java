@@ -1,4 +1,4 @@
-package com.kimhong.project_final.layout.manager;
+package com.kimhong.project_final.layout.admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -16,11 +16,12 @@ import android.widget.Toast;
 import com.kimhong.project_final.R;
 import com.kimhong.project_final.adapter.ProductAdapter;
 import com.kimhong.project_final.data.model.admin.product.DeleteProductResponse;
-import com.kimhong.project_final.data.model.admin.user.DeleteResponse;
 import com.kimhong.project_final.data.model.product.ProductResponse;
 import com.kimhong.project_final.data.remote.APIUtils;
 import com.kimhong.project_final.data.service.ProductService;
 import com.kimhong.project_final.data.service.AdminService;
+import com.kimhong.project_final.layout.manager.MainManagerActivity;
+
 import java.util.List;
 
 import retrofit2.Call;
@@ -59,11 +60,18 @@ public class ProductManagerActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        SharedPreferences sharedPreferences = getSharedPreferences("user_data", MODE_PRIVATE);
+        String role =  sharedPreferences.getString("role", "");
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ProductManagerActivity.this, MainAdminActivity.class);
-                startActivity(intent);
+                if (role == "ADMIN") {
+                    Intent intent = new Intent(ProductManagerActivity.this, MainAdminActivity.class);
+                    startActivity(intent);
+                }else{
+                    Intent intent = new Intent(ProductManagerActivity.this, MainManagerActivity.class);
+                    startActivity(intent);
+                }
             }
         });
     }

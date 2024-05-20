@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".layout.admin.MainAdminActivity">
+    tools:context=".layout.manager.MainManagerActivity">
 
     <TextView
         android:id="@+id/textView8"
@@ -20,7 +20,7 @@
         app:layout_constraintVertical_bias="0.146" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/btnUser"
+        android:id="@+id/btnInvoice"
         android:layout_width="147dp"
         android:layout_height="146dp"
         android:background="@drawable/base_button"
@@ -40,7 +40,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.727"
-            app:srcCompat="@drawable/ancestors" />
+            app:srcCompat="@drawable/invoice" />
 
         <TextView
             android:id="@+id/textView11"
@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
             android:fontFamily="@font/baloo"
-            android:text="USER"
+            android:text="INVOICE"
             android:textSize="22dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -107,10 +107,8 @@
         android:layout_marginStart="32dp"
         android:background="@drawable/base1_button"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnBill"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnUser"
+        app:layout_constraintTop_toBottomOf="@+id/btnInvoice"
         app:layout_constraintVertical_bias="0.095">
 
         <ImageView
@@ -140,46 +138,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.887" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/btnBill"
-        android:layout_width="147dp"
-        android:layout_height="146dp"
-        android:background="@drawable/base_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.833"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnCategory"
-        app:layout_constraintVertical_bias="0.095">
-
-        <ImageView
-            android:id="@+id/imageView16"
-            android:layout_width="101dp"
-            android:layout_height="85dp"
-            app:layout_constraintBottom_toTopOf="@+id/textView14"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.727"
-            app:srcCompat="@drawable/invoice" />
-
-        <TextView
-            android:id="@+id/textView14"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
-            android:fontFamily="@font/baloo"
-            android:text="INVOICE"
-            android:textSize="22dp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.494"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.943" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout

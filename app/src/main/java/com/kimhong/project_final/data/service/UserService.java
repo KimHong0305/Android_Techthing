@@ -17,4 +17,6 @@ public interface UserService {
     //signup
     @POST("user/add")
     Call<SignUpResponse> signUp(@Body SignUpRequest signUpRequest);
+
+
 }
