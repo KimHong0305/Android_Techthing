@@ -19,37 +19,54 @@ import java.util.List;
 public class UserAdapter extends ArrayAdapter<UserResponse.User> {
     private Context context;
     private List<UserResponse.User> users;
+    private OnDeleteClickListener onDeleteClickListener;
 
-    public UserAdapter(@NonNull Context context, List<UserResponse.User> users) {
+    public UserAdapter(@NonNull Context context, List<UserResponse.User> users, OnDeleteClickListener onDeleteClickListener) {
         super(context, R.layout.view_user_manager, users);
         this.context = context;
         this.users = users;
+        this.onDeleteClickListener = onDeleteClickListener;
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.view_user_manager, parent, false);
+        ViewHolder holder;
+        if (convertView == null) {
+            LayoutInflater inflater = LayoutInflater.from(context);
+            convertView = inflater.inflate(R.layout.view_user_manager, parent, false);
+            holder = new ViewHolder(convertView);
+            convertView.setTag(holder);
+        } else {
+            holder = (ViewHolder) convertView.getTag();
+        }
 
         UserResponse.User user = users.get(position);
+        holder.bind(user, onDeleteClickListener);
 
-        TextView txtName = view.findViewById(R.id.txtName);
-        TextView txtPhone = view.findViewById(R.id.txtPhone);
-        TextView txtEmail = view.findViewById(R.id.txtEmail);
-        ImageView deleteButton = view.findViewById(R.id.imageView25);
+        return convertView;
+    }
 
-        txtName.setText(user.getFullname());
-        txtPhone.setText(user.getPhone());
-        txtEmail.setText(user.getMail());
+    public static class ViewHolder {
+        private TextView txtName, txtPhone, txtEmail;
+        private ImageView deleteButton;
 
-        // Xử lý sự kiện xóa user
-        deleteButton.setOnClickListener(v -> {
-            // Xóa user từ danh sách và cập nhật adapter
-            users.remove(position);
-            notifyDataSetChanged();
-        });
+        public ViewHolder(View view) {
+            txtName = view.findViewById(R.id.txtName);
+            txtPhone = view.findViewById(R.id.txtPhone);
+            txtEmail = view.findViewById(R.id.txtEmail);
+            deleteButton = view.findViewById(R.id.imageView25);
+        }
 
-        return view;
+        public void bind(UserResponse.User user, OnDeleteClickListener onDeleteClickListener) {
+            txtName.setText(user.getFullname());
+            txtPhone.setText(user.getPhone());
+            txtEmail.setText(user.getMail());
+            deleteButton.setOnClickListener(v -> onDeleteClickListener.onDeleteClick(user.getId()));
+        }
+    }
+
+    public interface OnDeleteClickListener {
+        void onDeleteClick(String userId);
     }
 }
