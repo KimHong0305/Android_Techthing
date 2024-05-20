@@ -1,5 +1,7 @@
 package com.kimhong.project_final.data.remote;
 
+import com.kimhong.project_final.data.service.AdminService;
+import com.kimhong.project_final.data.service.AuthService;
 import com.kimhong.project_final.data.service.ForgotPasswordService;
 import com.kimhong.project_final.data.service.ProductService;
 import com.kimhong.project_final.data.service.UserService;
@@ -15,6 +17,12 @@ public class APIUtils {
     }
     public static ProductService getProductService() {
         return RetrofitClient.getClient(BASE_URL).create(ProductService.class);
+    }
+    public static AuthService getAuthService() {
+        return RetrofitClient.getClient(BASE_URL).create(AuthService.class);
+    }
+    public static AdminService getAdminService() {
+        return RetrofitClient.getClient(BASE_URL).create(AdminService.class);
     }
 }
 
