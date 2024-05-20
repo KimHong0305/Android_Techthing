@@ -101,11 +101,11 @@ public class CreateProductActivity extends AppCompatActivity {
                         public void onResponse(Call<CreateProductResponse> call, Response<CreateProductResponse> response) {
                             if (response.isSuccessful()) {
                                 CreateProductResponse createProductResponse = response.body();
-                                Toast.makeText(CreateProductActivity.this, "Tạo sản phẩm thành công", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(CreateProductActivity.this, "Thêm sản phẩm thành công", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(CreateProductActivity.this, ProductManagerActivity.class);
                                 startActivity(intent);
                             } else {
-                                Toast.makeText(CreateProductActivity.this, "Tạo sản phẩm không thành công", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(CreateProductActivity.this, "Thêm sản phẩm không thành công", Toast.LENGTH_SHORT).show();
                             }
                         }
 
