@@ -1,6 +1,6 @@
 package com.kimhong.project_final.data.model.forgotPassword;
 
-public class VerifyOtpRequest {
+public class VerifyOTPRequest {
     public String getMail() {
         return mail;
     }
@@ -11,16 +11,16 @@ public class VerifyOtpRequest {
 
     private String mail;
 
-    public String getOtp() {
+    public int getOtp() {
         return otp;
     }
 
-    public void setOtp(String otp) {
+    public void setOtp(int otp) {
         this.otp = otp;
     }
 
-    private String otp;
-    private VerifyOtpRequest(String mail, String otp){
+    private int otp;
+    public VerifyOTPRequest(String mail, int otp){
         this.mail = mail;
         this.otp = otp;
     }

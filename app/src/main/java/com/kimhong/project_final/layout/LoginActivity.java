@@ -16,10 +16,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.kimhong.project_final.R;
+import com.kimhong.project_final.data.model.auth.AuthRequest;
+import com.kimhong.project_final.data.model.auth.AuthResponse;
 import com.kimhong.project_final.data.model.login.LoginRequest;
 import com.kimhong.project_final.data.model.login.LoginResponse;
 import com.kimhong.project_final.data.remote.APIUtils;
+import com.kimhong.project_final.data.service.AuthService;
 import com.kimhong.project_final.data.service.UserService;
+import com.kimhong.project_final.layout.admin.MainAdminActivity;
+import com.kimhong.project_final.layout.manager.MainManagerActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,8 +34,10 @@ public class LoginActivity extends AppCompatActivity {
     private EditText etUsername, etPassword;
     private ConstraintLayout btnLogin;
     private UserService userService;
+    private AuthService authService;
     private ImageView seePassword;
     private TextView forgotPassword;
+    private String role;
     private boolean isPasswordVisible = false;
 
     @Override
@@ -76,6 +83,7 @@ public class LoginActivity extends AppCompatActivity {
 
         // Lấy instance của UserService
         userService = APIUtils.getUserService();
+        authService = APIUtils.getAuthService();
 
         // Thiết lập listener cho nút đăng nhập
         btnLogin.setOnClickListener(v -> {
@@ -98,11 +106,9 @@ public class LoginActivity extends AppCompatActivity {
                     if (loginResponse.getCode() == 200) {
                         // Lưu thông tin người dùng
                         saveUserData(loginResponse);
+                        String token = getToken();
+                        check_Role(token);
 
-                        // Chuyển đến màn hình chính
-                        Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                        finish();
                     } else {
                         // Hiển thị thông báo lỗi
                         Toast.makeText(LoginActivity.this, loginResponse.getMessage(), Toast.LENGTH_SHORT).show();
@@ -120,6 +126,53 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+    private void check_Role(String token) {
+        AuthRequest authRequest = new AuthRequest(token);
+        authService.check(authRequest).enqueue(new Callback<AuthResponse>() {
+            @Override
+            public void onResponse(Call<AuthResponse> call, Response<AuthResponse> response) {
+                if (response.isSuccessful()) {
+                    AuthResponse authResponse = response.body();
+                    if (authResponse.getCode() == 200) {
+                        AuthResponse.Result result = authResponse.getResult();
+                        if (result.isValid()) {
+                            role = result.getRole();
+                            switch (role) {
+                                case "USER":
+                                    Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                    finish();
+                                    break;
+                                case "ADMIN":
+                                    Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(LoginActivity.this, MainAdminActivity.class));
+                                    finish();
+                                    break;
+                                case "MANAGER":
+                                    Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(LoginActivity.this, MainManagerActivity.class));
+                                    finish();
+                                    break;
+                                default:
+                                    // Xử lý khi người dùng có role không hợp lệ
+                                    break;
+                            }
+                        } else {
+                            Toast.makeText(LoginActivity.this, "Chưa được cấp quyền", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(LoginActivity.this, "Chưa được cấp quyền", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<AuthResponse> call, Throwable t) {
+                Toast.makeText(LoginActivity.this, "Lỗi kết nối: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
     // ham hien thi mat khau
     private void updatePasswordVisibility() {
         if (isPasswordVisible) {
@@ -133,11 +186,17 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void saveUserData(LoginResponse loginResponse) {
-        // Lưu thông tin người dùng từ LoginResponse, ví dụ:
+        // Lưu thông tin người dùng từ LoginResponse
         SharedPreferences sharedPreferences = getSharedPreferences("user_data", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("token", loginResponse.getResult().getToken());
         editor.putString("userId", loginResponse.getResult().getUserId());
+        editor.putString("role", role);
         editor.apply();
+    }
+    // Lấy token từ SharedPreferences
+    private String getToken() {
+        SharedPreferences sharedPreferences = getSharedPreferences("user_data", MODE_PRIVATE);
+        return sharedPreferences.getString("token", "");
     }
 }

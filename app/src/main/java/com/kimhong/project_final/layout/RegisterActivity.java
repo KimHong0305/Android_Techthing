@@ -1,6 +1,8 @@
 package com.kimhong.project_final.layout;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Window;
@@ -103,6 +105,8 @@ public class RegisterActivity extends AppCompatActivity {
                         String phone = signUpResponse.getResult().getPhone();
                         // Lưu thông tin người dùng vào SharedPreferences hoặc nơi khác
                         Toast.makeText(RegisterActivity.this, "Đăng ký thành công!", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                        startActivity(intent);
                     } else {
                         // Đăng ký thất bại, hiển thị lỗi
                         Toast.makeText(RegisterActivity.this, "Đăng ký thất bại", Toast.LENGTH_SHORT).show();
