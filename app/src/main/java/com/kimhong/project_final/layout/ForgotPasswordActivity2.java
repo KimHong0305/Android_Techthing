@@ -80,6 +80,7 @@ public class ForgotPasswordActivity2 extends AppCompatActivity {
                                     Toast.makeText(ForgotPasswordActivity2.this, "OTP hợp lệ", Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(ForgotPasswordActivity2.this, ForgotPasswordActivity3.class);
                                     intent.putExtra("email", mail);
+                                    intent.putExtra("otp", otp);
                                     startActivity(intent);
                                 }
                             } else {

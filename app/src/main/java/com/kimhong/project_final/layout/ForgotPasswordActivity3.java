@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
@@ -15,6 +16,8 @@ import android.widget.Toast;
 
 import com.kimhong.project_final.R;
 import com.kimhong.project_final.data.model.forgotPassword.ChangePasswordRequest;
+import com.kimhong.project_final.data.model.forgotPassword.ChangePasswordResponse;
+import com.kimhong.project_final.data.model.forgotPassword.PasswordResult;
 import com.kimhong.project_final.data.remote.APIUtils;
 import com.kimhong.project_final.data.service.ForgotPasswordService;
 
@@ -50,6 +53,7 @@ public class ForgotPasswordActivity3 extends AppCompatActivity {
             }
         });
         String mail = getIntent().getStringExtra("email");
+        int otp = getIntent().getIntExtra("otp",0);
 
         seePassword.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,21 +78,32 @@ public class ForgotPasswordActivity3 extends AppCompatActivity {
                 String newPassword = password.getText().toString();
                 String newPasswordConfirm = password_confirm.getText().toString();
                 if (newPassword.equals(newPasswordConfirm)) {
-                    ChangePasswordRequest changePasswordRequest = new ChangePasswordRequest(mail, newPassword, newPasswordConfirm);
-
-                    forgotPasswordService.changePassword(changePasswordRequest).enqueue(new Callback<Void>() {
+                    ChangePasswordRequest changePasswordRequest = new ChangePasswordRequest(otp, mail, newPassword, newPasswordConfirm);
+                    forgotPasswordService.changePassword(changePasswordRequest).enqueue(new Callback<ChangePasswordResponse>() {
                         @Override
-                        public void onResponse(Call<Void> call, Response<Void> response) {
-                            // Đổi mật khẩu thành công, hiển thị thông báo và chuyển đến màn hình đăng nhập
-                            Toast.makeText(ForgotPasswordActivity3.this, "Đổi mật khẩu thành công", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(ForgotPasswordActivity3.this, LoginActivity.class);
-                            startActivity(intent);
+                        public void onResponse(Call<ChangePasswordResponse> call, Response<ChangePasswordResponse> response) {
+                            if (response.isSuccessful() && response.body() != null) {
+                                ChangePasswordResponse changePasswordResponse = response.body();
+                                if (changePasswordResponse.getCode() == 200) {
+                                    PasswordResult result = changePasswordResponse.getResult();
+                                    // Đổi mật khẩu thành công, hiển thị thông báo và chuyển đến màn hình đăng nhập
+                                    Toast.makeText(ForgotPasswordActivity3.this, "Đổi mật khẩu thành công", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(ForgotPasswordActivity3.this, LoginActivity.class);
+                                    startActivity(intent);
+                                } else {
+                                    // Xử lý trường hợp lỗi
+                                    Toast.makeText(ForgotPasswordActivity3.this, "Đổi mật khẩu không thành công", Toast.LENGTH_SHORT).show();
+                                }
+                            } else {
+                                // Xử lý trường hợp lỗi
+                                Toast.makeText(ForgotPasswordActivity3.this, "Đổi mật khẩu không thành công", Toast.LENGTH_SHORT).show();
+                            }
                         }
 
                         @Override
-                        public void onFailure(Call<Void> call, Throwable t) {
+                        public void onFailure(Call<ChangePasswordResponse> call, Throwable t) {
                             // Xử lý khi gặp lỗi kết nối hoặc lỗi không xác định
-                            Toast.makeText(ForgotPasswordActivity3.this, "Đổi mật khẩu", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ForgotPasswordActivity3.this, "Đổi mật khẩu không thành công", Toast.LENGTH_SHORT).show();
                         }
                     });
                 } else {

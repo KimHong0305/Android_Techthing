@@ -1,6 +1,15 @@
 package com.kimhong.project_final.data.model.forgotPassword;
 
 public class ChangePasswordRequest {
+    public int getOtp() {
+        return otp;
+    }
+
+    public void setOtp(int otp) {
+        this.otp = otp;
+    }
+
+    private int otp;
     public String getMail() {
         return mail;
     }
@@ -31,7 +40,8 @@ public class ChangePasswordRequest {
 
     private String password_confirm;
 
-    public ChangePasswordRequest(String mail, String password, String password_confirm){
+    public ChangePasswordRequest(int otp, String mail, String password, String password_confirm){
+        this.otp = otp;
         this.mail = mail;
         this.password = password;
         this.password_confirm = password_confirm;
